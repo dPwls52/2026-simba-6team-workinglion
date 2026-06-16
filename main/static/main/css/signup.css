@@ -1,0 +1,144 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background: linear-gradient(180deg, var(--y0, #FFF7D1) 0%, #FFF 236.43%);
+
+    width: 100%;
+    min-height: 100dvh;
+
+background: linear-gradient(180deg, var(--y0, #FFF7D1) 0%, #FFF 236.43%);
+}
+.header {
+    width: 394.999px;
+height: 167.153px;
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+}
+
+.bird {
+    width: 176px;
+height: 151.153px;
+
+align-self: flex-end;
+}
+.bubble-box{
+    width: 234.632px;
+    height: auto;
+    align-self: flex-start; 
+    margin: 0;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bubble {
+    width: 256.544px;
+    height: 61.207px;
+    /* object-fit: contain; */
+    border-radius: 10px;
+    background: var(--y3, #FFE357);
+
+}
+
+.bubble-text {
+    width: 100%;
+    margin: 0;
+
+    color: #000;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.11px;
+
+    margin-top: -56px;
+    padding-top: 12px;
+
+}
+.content {
+    display: flex;
+    width: 385px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+}
+.main{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 40px;
+align-self: stretch;
+}
+.block{
+    height: 128px;
+align-self: stretch;
+
+
+}
+.top-text {
+    height: 27px;
+
+    color: #7D7D7D;
+font-family: Inter;
+font-size: 15.932px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -0.159px;
+
+display: flex;
+align-items: flex-start;
+}
+.bottom-text {
+    height: 29px;
+}
+.input {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 385px;
+    height: 72px;
+
+    gap: 27px 24px 26px 342px;
+
+
+    border-radius: 20px;
+    border: 1px solid #7D7D7D;
+    background: #FFF;
+}
+.x {
+    width: 19px;
+height: 19px;
+position: absolute;
+right: 24px;
+
+fill: #8F8E8E;
+}
+.button{
+    display: flex;
+    width: 385px;
+    height: 72px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 20px;
+    background: #CFCFCF;
+    margin-top: 30px;
+}
+.button-text {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.25px;
+}
