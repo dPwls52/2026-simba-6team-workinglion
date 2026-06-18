@@ -20,6 +20,17 @@
     flex-direction: column;
     gap: 65px;
 }
+.birdbody{
+    width: 178.274px;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+}
+.bird{
+    width: 138px;
+    margin-bottom: -20px;
+}
 .coin{
     width: 103px;
 height: 43px;
@@ -29,8 +40,8 @@ flex-direction: row;
 justify-content: center;
 align-items: center;
 
-margin-bottom: 30px;
-margin-left: 250px;
+margin-bottom: 20px;
+margin-left: 120px;
 border-radius: 30px;
 border: 1px solid var(--y3, #FFE357);
 background: #FFEFA6;
