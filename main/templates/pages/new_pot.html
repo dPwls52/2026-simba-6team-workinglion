@@ -16,7 +16,7 @@
             <p class="title">팟 만들기</p>
         </div>
 
-        <form class="frame-2" action="{% url 'accounts:signup' %}" method="post">
+        <form class="frame-2" action="{% url 'main:create' %}" method="post">
             {% csrf_token %}
             <div class="name-container">
                 <p class="section-title">팟 이름</p> 
