@@ -19,6 +19,18 @@ def join_pot(request, pot_id):
     pot = get_object_or_404(Pot, pk=pot_id)
     return render(request, 'pages/join_pot.html', {'pot': pot})
 
+def join_pot_action(request, pot_id):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+        
+    pot = get_object_or_404(Pot, pk=pot_id)
+
+    if request.user in pot.participants.all():
+        pot.participants.remove(request.user)
+    else:
+        pot.participants.add(redquest.user)
+    return redirect('main:dashboard')
+
 def new_pot(request):
     if not request.user.is_authenticated:
         return redirect('accounts:login')

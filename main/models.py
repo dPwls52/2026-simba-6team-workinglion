@@ -8,4 +8,5 @@ class Pot(models.Model):
     fee = models.IntegerField()
     total_prize = models.IntegerField()
     pot_people = models.IntegerField()
+    participants = models.ManyToManyField(User, related_name='join_pots', blank=True)
     
