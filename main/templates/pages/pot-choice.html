@@ -12,19 +12,26 @@
     <div class="container">
         <div class="main">
             <div class="back">
-                <div class="back-btn">
-                    <svg class="back-text" xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
-                        <path d="M24.1668 14.5L4.8335 14.5M12.0835 21.75L4.8335 14.5L12.0835 7.25" stroke="black" stroke-width="1.625" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
+                <a href="{% url 'main:dashboard' %}">
+                    <div class="back-btn">
+                        <svg class="back-text" xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+                            <path d="M24.1668 14.5L4.8335 14.5M12.0835 21.75L4.8335 14.5L12.0835 7.25" stroke="black" stroke-width="1.625" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </a>
             </div>
             <div class="body">
-                <button class="pot-btn">
-                    <p class="btn-text">팟 만들기</p>
-                </button>
-                <button class="pot-btn">
-                    <p class="btn-text">팟 참여하기</p>
-                </button>
+                <a href="{% url 'main:new_pot' %}">
+                    <button class="pot-btn">
+                        <p class="btn-text">팟 만들기</p>
+                    </button>
+                </a>
+                
+                <a href="{% url 'main:dashboard' %}">
+                    <button class="pot-btn">
+                        <p class="btn-text">팟 참여하기</p>
+                    </button>
+                </a>
             </div>
         </div>
     </div>

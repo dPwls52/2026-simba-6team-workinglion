@@ -9,6 +9,8 @@ def signup_login(request):
     return render(request, 'pages/signup_login.html')
 
 def dashboard(request):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
     pots = Pot.objects.all()
     return render(request, 'pages/dashboard.html', {'pots': pots})
 
@@ -22,7 +24,7 @@ def join_pot(request, pot_id):
 def join_pot_action(request, pot_id):
     if not request.user.is_authenticated:
         return redirect('accounts:login')
-        
+
     pot = get_object_or_404(Pot, pk=pot_id)
 
     if request.user in pot.participants.all():
