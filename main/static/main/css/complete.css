@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    text-align: center;
+
+    background: linear-gradient(180deg, var(--y0, #FFF7D1) 0%, #FFF 236.43%);
+
+    width: 100%;
+    min-height: 100dvh;
+}
+.main{
+    width: 430px;
+    margin-top: 100px;
+}
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.complete-bird{
+    width: 215px;
+    height: 189.365px;
+    aspect-ratio: 109/96;
+}
+.complete-text{
+    color: #000;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
