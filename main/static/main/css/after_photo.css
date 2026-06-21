@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background: linear-gradient(180deg, var(--y0, #FFF7D1) 0%, #FFF 236.43%);
+
+    width: 100%;
+    min-height: 100dvh;
+}
+.main{
+    display: flex;
+    width: 386px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 35px;
+    margin-top: 86px;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    gap: 74px;
+}
+.back{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.back-btn{
+    width: 54px;
+    height: 54px;
+
+    background: #FFFCEB;
+    border: 1px solid #DDD08A;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+}
+.back-text{
+    width: 29px;
+    height: 29px;
+    
+    aspect-ratio: 1/1;
+}
+.title{
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+.title-text{
+    color: #000;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.icon-photo{
+    width: 32px;
+    height: 32px;
+    aspect-ratio: 1/1;
+}
+.body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 31px;
+    align-self: stretch;
+}
+.photospace{
+    display: flex;
+    height: 464.997px;
+    padding: 172px 93px 198px 92px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    aspect-ratio: 346/461;
+    /* ---------------------------------이미지 삽입--------- */
+    border-radius: 15px;
+    border: 2px dashed #34A512;
+    background: url() lightgray -191.319px 0px / 209.639% 100% no-repeat;
+}
+.additional{
+    display: flex;
+    width: 240px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6.512px;
+}
+.additional-row{
+    display: flex;
+    align-items: center;
+    gap: 3.721px;
+}
+.check-icon{
+    width: 15.585px;
+    height: 11.697px;
+
+    fill: #50C020;
+}
+.additional-text{
+    color: #8F8E8E;
+    font-family: Inter;
+    font-size: 13.953px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.vote-box{
+    display: flex;
+    width: 308px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+}
+.vote-current{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    align-self: stretch;
+}
+.vote-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.maintitle{
+    color: #000;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.subtitle{
+    color: #8F8E8E;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.grad-box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    align-self: stretch;
+}
+.gradation{
+    height: 12px;
+    align-self: stretch;
+
+    border-radius: 5px;
+    background: linear-gradient(90deg, #4ACA57 0%, #FF0004 100%);
+}
+.grad-text{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.agree{
+    color: #4ACA57;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.disagree{
+    color: #D45B5D;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.vote-caution{
+    display: flex;
+    height: 31px;
+    padding: 7px 21px 6px 19px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+
+    border-radius: 10px;
+    background: #FFF4BD;
+}
+.caution-body{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.caution-icon{
+    width: 18px;
+    height: 18px;
+    aspect-ratio: 1/1;
+}
+.caution-text{
+    color: #AE4C00;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
