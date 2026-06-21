@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/css/photo_vote.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/photo_vote_animation.css' %}">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <div class="header">
+                <div class="back">
+                    <a href="{% url 'main:dashboard' %}">
+                        <div class="back-btn">
+                            <svg class="back-text" xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+                                <path d="M24.1668 14.5L4.8335 14.5M12.0835 21.75L4.8335 14.5L12.0835 7.25" stroke="black" stroke-width="1.625" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="title">
+                    <p class="title-text">{{}} 인증 확인</p> <!-----다른 멤버 이름------>
+                </div>
+            </div>
+            <div class="body">
+                <div class="body-top">
+                    <div class="subtitle">
+                        <p class="goal">{{ pot.pot_name }}</p>
+                        <p class="date">{{ now|date:"Y.m.d" }}</p>
+                    </div>
+                    <div class="photospace">
+                        
+                    </div>
+                </div>
+                <div class="body-bottom">
+                    <div class="vote-box">
+                            <div class="vote-title">
+                                <p class="maintitle">현재 투표 현황</p>
+                                <p class="subtitle">n명 중 n명 응답</p> <!--하드코딩-->
+                            </div>
+                            <div class="grad-box">
+                                <div class="gradation"></div>
+                                <div class="grad-text">
+                                    <p class="agree">인정 n명 (nn%)</p> <!--하드코딩-->
+                                    <p class="disagree">미인정 n명 (nn%)</p> <!--하드코딩-->
+                                </div>
+                            </div>
+                    </div>
+                    <div class="vote-choice">
+                        <p class="opinion">   나의 의견은?</p>
+                        <div class="button-box">
+                            <button class="agree-btn">
+                                <img src="{% 'main/img/agree.png' %}" class="agree-icon" alt="엄지손">
+                                <p class="agree-text">인정해요</p>
+                            </button>
+                            <button class="disagree-btn">
+                                <img src="{% 'main/img/agree.png' %}" class="disagree-icon" alt="엄지손">
+                                <p class="disagree-text">인정못해요</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
