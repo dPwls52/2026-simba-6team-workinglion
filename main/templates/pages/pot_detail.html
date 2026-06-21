@@ -26,93 +26,110 @@
                 <p class="info-text">{{ pot.participants.count }}명 | {{ pot.days }}일 챌린지 | 걸린 총상금: {{ pot.total_prize }}pt</p>
             </div>
             <div class="member-container">
+                <!--변수확인좀-->
+                {% for info in participant_infos %}
                 <div class="member-box">
-                    <div class="avatar-wrapper" data-color="{{ info.avatar_color }}">
+                    <!--여기도 상대의 링크 걸어야됌-->
+                    <a href="" class="avatar-wrapper" data-color="{{ info.avatar_color }}">
                         {% include 'pages/_bird_svg.html' %}
-                    </div>
+                    </a>
+
 
                     <div class="member-info">
-                        <span class="nickname">{{ info.user.profile.nickname }}</span>
-                        
+                        <span class="nickname">
+                            {% if info.user == request.user %}
+                                나
+                            {% else %}
+                                {{ info.user.profile.nickname }}
+                            {% endif %}
+                        </span>
+
                         {% if not info.proof %}
-                            <span class="badge badge-none">미인증</span>
+                            <div class="badge-none">
+                                <p>미인증</p>
+                            </div>
                         {% elif info.proof.status == 'fail' %} 
-                            <span class="badge badge-fail">인증실패</span>
+                            <div class="badge-fail">
+                                <p>인증실패</p>
+                            </div>
                         {% else %}
-                            <span class="badge badge-success">인증</span>
+                            <div class="badge-success">
+                                <p>인증</p>
+                            </div>
                         {% endif %}
                     </div>    
                 </div>
             </div>  
+            {% endfor %}
         </div>
 
         <div class="item-frame">
             <div class="text-container">
                 <p class="gray-small">아이템으로 장난치기</p>
-                <p class="gray-small">보유 포인트:nnpt</p>
+                <p class="gray-small">보유 포인트: {{ request.user.profile.point }}pt</p>
             </div> 
             <!--action어디로?-->
-            <form class="treat-container"  method="post"></form> 
+            <form class="treat-container"  method="post">
                 <div class="item-list">
-                    <input type="radio" id="item-post" name="treat-item" value="post">
-                    <label for="treat-item" class="item-box">
+                    <input type="radio" id="item-post" name="treat-item" value="post" checked>
+                    <label for="item-post" class="item-box">
                         <div class="item-img-box">
+                            {% include 'pages/_bird_post_svg.html' %}
                         </div>
                         <p class="item-name">바보 포스트잇 붙이기</p>
                         <p class="item-price">50pt</p>
                     </label>
 
                     <input type="radio" id="item-poop" name="treat-item" value="poop">
-                    <label for="treat-item" class="item-box">
+                    <label for="item-poop" class="item-box">
                         <div class="item-img-box">
+                            {% include 'pages/_bird_poop_svg.html' %}
                         </div>
                         <p class="item-name">똥 던지기</p>
                         <p class="item-price">100pt</p>
                     </label>
 
                     <input type="radio" id="item-glasses" name="treat-item" value="glasses">
-                    <label for="treat-item" class="item-box">
+                    <label for="item-glasses" class="item-box">
                         <div class="item-img-box">
+                            {% include 'pages/_bird_glasses_svg.html' %}
                         </div>
                         <p class="item-name">회오리안경 씌우기</p>
                         <p class="item-price">70pt</p>
                     </label> 
 
                     <input type="radio" id="item-flower" name="treat-item" value="flower">
-                    <label for="treat-item" class="item-box">
+                    <label for="item-flower" class="item-box">
                         <div class="item-img-box">
+                            {% include 'pages/_bird_flower_svg.html' %}
                         </div>
                         <p class="item-name">꽃 달아주기</p>
                         <p class="item-price">70pt</p>
                     </label> 
 
                     <input type="radio" id="item-gyaru" name="treat-item" value="gyaru">
-                    <label for="treat-item" class="item-box">
+                    <label for="item-gyaru" class="item-box">
                         <div class="item-img-box">
+                            {% include 'pages/_bird_gyaru_svg.html' %}
                         </div>
                         <p class="item-name">갸루로 만들기</p>
                         <p class="item-price">120pt</p>
                     </label> 
                 </div>
                 <div class="select-container">
-                    <select class="select-btn" name="select-people">
-                        <option value="" disabled selected hidden>선택 ∨</option>
+                    <select class="select-btn" name="select-people" required>
+                        <option value="" disabled selected hidden><span class="select-text">선택</span></option>
                         {% for info in participant_infos %}
-                            
                             {% if info.user != request.user %}
-                                
                                 <option class="select-text" value="{{ info.user.id }}">
                                     {{ info.user.profile.nickname }}
                                 </option>
-                                
-                            {% endif %}
-                            
+                            {% endif %}                    
                         {% endfor %}
                     </select>
-                    <p class="gray-small">에게 <span class="item-text">nn</span> 적용</p>
+                    <p class="gray-small">에게 <span class="item-text" id="target-name">바보 포스트잇 붙이기</span> 적용</p>
                 </div>  
-                
-                <button type="submit" id="use-btn" disabled>사용하기 (nnpt 차감)</button>
+                <button type="submit" id="use-btn">사용하기(<span id="target-price">50pt</span>차감)</button>
             </form>
         </div>
         
@@ -120,8 +137,9 @@
             <div class="code-container">
                 <p class="gray-medium">입장코드</p>
                 <div class="code-box">
-                    <p class="gray-medium">code</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <!--입장코드 동적할당필요-->
+                    <p class="gray-medium" id="room-code">HUB42K</p>
+                    <svg svg id="copy-btn" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                     <path d="M8.93783 19.4792H6.18783C5.33692 19.4792 4.52087 19.1412 3.91919 18.5395C3.31751 17.9378 2.97949 17.1218 2.97949 16.2709V5.72921C2.97949 4.8783 3.31751 4.06225 3.91919 3.46057C4.52087 2.85889 5.33692 2.52087 6.18783 2.52087H14.8962C15.7471 2.52087 16.5631 2.85889 17.1648 3.46057C17.7665 4.06225 18.1045 4.8783 18.1045 5.72921V7.56254" stroke="#7D7D7D" stroke-width="1.65" stroke-linecap="round"/>
                     <path d="M7.10449 2.52087H13.9795V4.81254C13.9795 5.29877 13.7863 5.76509 13.4425 6.1089C13.0987 6.45272 12.6324 6.64587 12.1462 6.64587H8.93783C8.4516 6.64587 7.98528 6.45272 7.64146 6.1089C7.29765 5.76509 7.10449 5.29877 7.10449 4.81254V2.52087Z" stroke="#7D7D7D" stroke-width="1.65"/>
                     <path d="M11.2295 12.1459C11.2295 11.5381 11.4709 10.9552 11.9007 10.5255C12.3305 10.0957 12.9134 9.85425 13.5212 9.85425H16.7295C17.3373 9.85425 17.9202 10.0957 18.3499 10.5255C18.7797 10.9552 19.0212 11.5381 19.0212 12.1459V17.1876C19.0212 17.7954 18.7797 18.3783 18.3499 18.808C17.9202 19.2378 17.3373 19.4792 16.7295 19.4792H13.5212C12.9134 19.4792 12.3305 19.2378 11.9007 18.808C11.4709 18.3783 11.2295 17.7954 11.2295 17.1876V12.1459Z" stroke="#7D7D7D" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
@@ -130,8 +148,8 @@
             </div>
 
             <!--여기 앵커 연결-->
-            <a href="" class="certify-box">
-                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+            <a href="{% url 'main:before_photo' pot.id %}" class="certify-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px" viewBox="0 0 35 35" fill="none">
                 <path d="M17.5 23.3333C19.9162 23.3333 21.875 21.3745 21.875 18.9583C21.875 16.542 19.9162 14.5833 17.5 14.5833C15.0838 14.5833 13.125 16.542 13.125 18.9583C13.125 21.3745 15.0838 23.3333 17.5 23.3333Z" stroke="black" stroke-width="2.1875"/>
                 <path d="M2.91699 19.4891C2.91699 15.0193 2.91699 12.7852 4.00928 11.181C4.48407 10.4839 5.09162 9.88724 5.7972 9.42515C6.8472 8.73536 8.16262 8.4889 10.1766 8.4014C11.1376 8.4014 11.9645 7.68682 12.1526 6.76078C12.2964 6.08246 12.6699 5.47458 13.2101 5.03987C13.7503 4.60517 14.424 4.37029 15.1174 4.37495H19.8832C21.3241 4.37495 22.5651 5.3739 22.848 6.76078C23.0362 7.68682 23.863 8.4014 24.8241 8.4014C26.8366 8.4889 28.152 8.73682 29.2035 9.42515C29.9107 9.8889 30.5189 10.4854 30.9914 11.181C32.0837 12.7852 32.0837 15.0193 32.0837 19.4891C32.0837 23.9589 32.0837 26.1916 30.9914 27.7972C30.5166 28.4943 29.909 29.091 29.2035 29.5531C27.5687 30.6249 25.2922 30.6249 20.7407 30.6249H14.2599C9.70845 30.6249 7.43199 30.6249 5.7972 29.5531C5.09201 29.0904 4.48495 28.4933 4.01074 27.7958C3.6939 27.3238 3.46057 26.801 3.32095 26.2499M27.7087 14.5833H26.2503" stroke="black" stroke-width="2.1875" stroke-linecap="round"/>
                 </svg>
@@ -141,3 +159,89 @@
     </main>
 </body>
 </html>
+
+<!--그리고 백에서 어떻게 아바타를 저장하는지를 알아야 이페이지에서 상대 아바타를 조작할수있음-->
+
+<script>
+    // 1. 내포인트
+    const myPoint = parseInt("{{ request.user.profile.point|default:'0' }}", 10); 
+    
+    // 2. 조종할 요소
+    const itemRadios = document.querySelectorAll('input[name="treat-item"]');
+    const peopleSelect = document.querySelector('.select-btn'); // 선택창
+    const useBtn = document.getElementById('use-btn');          // 사용버튼
+    const targetName = document.getElementById('target-name');
+    const targetPrice = document.getElementById('target-price');
+
+    // 버튼을 끄고 켜는 함수
+    function checkAndEnableButton() {
+        // 현재 체크되어 있는 라디오 버튼 찾기
+        const checkedRadio = document.querySelector('input[name="treat-item"]:checked');
+        if (!checkedRadio) return; 
+
+        // 아이템 정보(이름, 가격) 가져오기
+        const label = checkedRadio.nextElementSibling;
+        const itemName = label.querySelector('.item-name').innerText;
+        const priceText = label.querySelector('.item-price').innerText; // "50pt"
+        const itemPrice = parseInt(priceText, 10); // "50pt"에서 숫자 50만 쏙 빼옵니다!
+
+        // 아래쪽 텍스트 업데이트
+        targetName.innerText = itemName;
+        targetPrice.innerText = priceText;
+
+        // 선택창에서 누구를 골랐는지 확인 (빈 값이 아니면 true)
+        const isPersonSelected = peopleSelect.value !== "";
+
+        // 사람도 선택했고 && 내 포인트 >= 아이템 가격
+        if (isPersonSelected && myPoint >= itemPrice) {
+            useBtn.disabled = false; // 버튼 켜기!
+            useBtn.style.background = "#FBE51E"; 
+            useBtn.style.cursor = "pointer";
+            useBtn.innerText = `사용하기 (${priceText} 차감)`;
+        } else {
+            useBtn.disabled = true; // 버튼 끄기!
+            useBtn.style.background = "#D1D1D1"; 
+            // 포인트가 모자란 경우 -> 텍스트로 알려주기
+            if (isPersonSelected && myPoint < itemPrice) {
+                useBtn.innerText = "포인트가 부족합니다 😥";
+            } else {
+                useBtn.innerText = `사용하기 (${priceText} 차감)`;
+            }
+        }
+        
+    }
+
+    // 3. 클릭할 때마다 검사 
+    itemRadios.forEach(radio => {
+        radio.addEventListener('change', checkAndEnableButton);
+    });
+
+    // 4. 누구한테 쓸지고를 때마다 검사 실행
+    peopleSelect.addEventListener('change', checkAndEnableButton);
+
+    // 5. 페이지가 처음 켜졌을 때도 
+    checkAndEnableButton();
+
+
+    // 1. 복사할 텍스트와 복사 버튼
+const roomCode = document.getElementById('room-code');
+const copyBtn = document.getElementById('copy-btn');
+
+// 2. 복사 버튼에 클릭 이벤트 
+copyBtn.addEventListener('click', function() {
+    // p 태그 안에 있는 텍스트 가져오기
+    const textToCopy = roomCode.innerText;
+
+    // 브라우저 클립보드에 텍스트 복사하기 
+    navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+            // 복사 성공 시 실행될 코드 (알림창 띄우기)
+            alert("입장 코드가 클립보드에 복사되었습니다!");
+        })
+        .catch(err => {
+            // 혹시라도 실패했을 때
+            console.error('복사 실패:', err);
+            alert("복사에 실패했습니다. 직접 드래그해서 복사해 주세요.");
+        });
+});
+</script>
