@@ -11,9 +11,70 @@
 <body>
     <div class="container">
         <div class="main">
+            <div class="header">
+                <div class="back">
+                    <a href="{% url 'main:dashboard' %}">
+                        <div class="back-btn">
+                            <svg class="back-text" xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+                                <path d="M24.1668 14.5L4.8335 14.5M12.0835 21.75L4.8335 14.5L12.0835 7.25" stroke="black" stroke-width="1.625" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
             <div class="body">
-                <img src="{% static 'main/img/complete.png' %}" class="complete-bird" alt="완료 캐릭터">
-                <p class="complete-text">{{pot.pot_name}} 팟 완료 !</p>
+                <div class="body-top">
+                    <img src="{% static 'main/img/complete.png' %}" class="complete-bird" alt="완료 캐릭터">
+                    <p class="title">{{pot.pot_name}} 팟 완료 !</p>
+                    <p class="subtext">{{pot.pot_people}}명 참여 | {{ pot.days }}일 챌린지 </p>
+                </div>
+                <div class="body-bottom">
+                    <div class="total">
+                        <div class="total-body">
+                            <div class="calculate">
+                                <p class="total-title">포인트 정산 ({{pot.pot_people}}인 · {{ pot.days }}일 기준)</p>
+                                <div class="cal-text">
+                                    <div class="entrance">
+                                        <p class="entrance-text">인당 입장료</p>
+                                        <!----------입장료 수정----------->
+                                        <p class="entrance-cal">{{}}pt x {{pot.pot_people}}명 = {{}}pt</p>
+                                    </div>
+                                    <div class="bonus">
+                                        <p class="entrance-text">보너스 포인트</p>
+                                        <p class="entrance-cal">+ {{}}pt</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="total-text">
+                                <p class="ttotal">총 상금</p>
+                                <p class="total-result">{{}}pt</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ranking">
+                        <p class="rangking-title">  최종 순위 및 획득 포인트</p>
+                        <!--------------------for문 이용-------------------------->
+                        {% for [] in [] %}
+                        <div class="rank">
+                            <div class="rank-box">
+                                <div class="rank-body">
+                                    <div class="body-left">
+                                        <img src="{}" class="medal" alt="메달">
+                                        <div class="rank-text">
+                                            <p class="name">{{name}}</p>
+                                            <p class="percent">{{ }}/{{ }}회 · {{ }}%</p>
+                                        </div>
+                                    </div>
+                                    <div class="body-right">
+                                        <p class="total-point">+ {{ }}pt</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
