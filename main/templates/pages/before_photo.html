@@ -60,19 +60,29 @@
                         </div>
                     </div>
                 </div>
+                {% if my_today_proof %}
                 <div class="body-bottom">
-                    
-                        <button class="gallery">
+                    <p class="upload-text">오늘 인증을 완료했어요</p>
+                </div>
+                {% else %}
+                <form class="body-bottom" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label class="gallery">
                             <img src="{% static 'main/img/gallery.png' %}" class="gallery_img" alt="갤러리">
                             <p class="btn-text">갤러리에서 선택</p>
-                        </button>
-                    
-                        <button class="photo">
+                            <input type="file" name="image" accept="image/*" required>
+                        </label>
+
+                        <button class="photo" type="submit">
                             <img src="{% static 'main/img/camera_icon.png' %}" class="camera_icon_img" alt="카매라 아이콘">
-                            <p class="btn-text">카메라로 촬영</p>
+                            <p class="btn-text">인증사진 업로드</p>
                         </button>
-                    
-                </div>
+
+                        {% if error %}
+                        <p class="upload-text">{{ error }}</p>
+                        {% endif %}
+                </form>
+                {% endif %}
             </div>
         </div>
     </div>

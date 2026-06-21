@@ -51,6 +51,7 @@ def pot_detail(request, pot_id):
 
     for participant in participants:
         proof = None
+        avatar_color = None
         if Proof.objects.filter(
             pot=pot,
             user=participant,
@@ -62,12 +63,17 @@ def pot_detail(request, pot_id):
                 auth_date=today,
             )
 
+        if PotAvatar.objects.filter(pot=pot, user=participant).exists():
+            avatar = PotAvatar.objects.get(pot=pot, user=participant)
+            avatar_color = avatar.color
+
         if participant == request.user:
             my_today_proof = proof
 
         participant_infos.append({
             'user': participant,
             'proof': proof,
+            'avatar_color': avatar_color,
         })
 
     context = {
@@ -216,7 +222,51 @@ def avatar_setting(request, pot_id):
 def before_photo(request, pot_id):
     if not request.user.is_authenticated:
         return redirect('accounts:login')
-        
+
     pot = get_object_or_404(Pot, pk=pot_id)
-    
-    return render(request, 'pages/before_photo.html', {'pot': pot})
+
+    if not pot.participants.filter(id=request.user.id).exists():
+        return redirect('main:dashboard')
+
+    today = datetime.date.today()
+    my_today_proof = None
+
+    if Proof.objects.filter(
+        pot=pot,
+        user=request.user,
+        auth_date=today,
+    ).exists():
+        my_today_proof = Proof.objects.get(
+            pot=pot,
+            user=request.user,
+            auth_date=today,
+        )
+
+    if request.method == 'POST':
+        if my_today_proof:
+            return redirect('main:pot_detail', pot_id=pot.id)
+
+        image = request.FILES.get('image')
+        if image:
+            proof = Proof(
+                pot=pot,
+                user=request.user,
+                image=image,
+            )
+            proof.save()
+            return redirect('main:pot_detail', pot_id=pot.id)
+
+        context = {
+            'pot': pot,
+            'now': today,
+            'my_today_proof': my_today_proof,
+            'error': '인증사진을 선택해주세요.',
+        }
+        return render(request, 'pages/before_photo.html', context)
+
+    context = {
+        'pot': pot,
+        'now': today,
+        'my_today_proof': my_today_proof,
+    }
+    return render(request, 'pages/before_photo.html', context)
