@@ -30,9 +30,9 @@
                 {% for info in participant_infos %}
                 <div class="member-box">
                     <!--여기도 상대의 링크 걸어야됌-->
-                    <a href="" class="avatar-wrapper" data-color="{{ info.avatar_color }}">
+                    <div class="avatar-wrapper" data-color="{{ info.avatar_color }}">
                         {% include 'pages/_bird_svg.html' %}
-                    </a>
+                    </div>
 
 
                     <div class="member-info">
@@ -44,17 +44,13 @@
                             {% endif %}
                         </span>
 
-                        {% if not info.proof %}
-                            <div class="badge-none">
-                                <p>미인증</p>
-                            </div>
-                        {% elif info.proof.status == 'fail' %} 
-                            <div class="badge-fail">
-                                <p>인증실패</p>
-                            </div>
-                        {% else %}
+                        {% if info.proof %}
                             <div class="badge-success">
                                 <p>인증</p>
+                            </div>
+                        {% else %}
+                            <div class="badge-none">
+                                <p>미인증</p>
                             </div>
                         {% endif %}
                     </div>    
@@ -69,7 +65,7 @@
                 <p class="gray-small">보유 포인트: {{ request.user.profile.point }}pt</p>
             </div> 
             <!--action어디로?-->
-            <form class="treat-container"  method="post">
+            <div class="treat-container">
                 <div class="item-list">
                     <input type="radio" id="item-post" name="treat-item" value="post" checked>
                     <label for="item-post" class="item-box">
@@ -129,8 +125,8 @@
                     </select>
                     <p class="gray-small">에게 <span class="item-text" id="target-name">바보 포스트잇 붙이기</span> 적용</p>
                 </div>  
-                <button type="submit" id="use-btn">사용하기(<span id="target-price">50pt</span>차감)</button>
-            </form>
+                <button type="button" id="use-btn" disabled>사용하기(<span id="target-price">50pt</span>차감)</button>
+            </div>
         </div>
         
         <div class="code-frame">
@@ -138,7 +134,7 @@
                 <p class="gray-medium">입장코드</p>
                 <div class="code-box">
                     <!--입장코드 동적할당필요-->
-                    <p class="gray-medium" id="room-code">HUB42K</p>
+                    <p class="gray-medium" id="room-code">{{ pot.pot_code }}</p>
                     <svg svg id="copy-btn" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                     <path d="M8.93783 19.4792H6.18783C5.33692 19.4792 4.52087 19.1412 3.91919 18.5395C3.31751 17.9378 2.97949 17.1218 2.97949 16.2709V5.72921C2.97949 4.8783 3.31751 4.06225 3.91919 3.46057C4.52087 2.85889 5.33692 2.52087 6.18783 2.52087H14.8962C15.7471 2.52087 16.5631 2.85889 17.1648 3.46057C17.7665 4.06225 18.1045 4.8783 18.1045 5.72921V7.56254" stroke="#7D7D7D" stroke-width="1.65" stroke-linecap="round"/>
                     <path d="M7.10449 2.52087H13.9795V4.81254C13.9795 5.29877 13.7863 5.76509 13.4425 6.1089C13.0987 6.45272 12.6324 6.64587 12.1462 6.64587H8.93783C8.4516 6.64587 7.98528 6.45272 7.64146 6.1089C7.29765 5.76509 7.10449 5.29877 7.10449 4.81254V2.52087Z" stroke="#7D7D7D" stroke-width="1.65"/>

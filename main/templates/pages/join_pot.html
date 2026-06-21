@@ -46,10 +46,13 @@
                                     </button>
                                 </div>
                         </div>
+                        {% if error %}
+                        <p class="point">{{ error }}</p>
+                        {% endif %}
                         <div class="entrance">
-                            <p class="point">현재 보유 포인트: nnpt</p> <!---->
+                            <p class="point">현재 보유 포인트: {{ request.user.profile.point }}pt</p>
                             <button class="ent-btn" type="submit">
-                                <p class="btn-text">팟 입장하기(nnpt차감)</p><!------>
+                                <p class="btn-text">팟 입장하기</p>
                             </button>
                         </div>
                     

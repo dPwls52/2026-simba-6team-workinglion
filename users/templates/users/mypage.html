@@ -11,6 +11,8 @@
         <p>아이디: {{ profile_user.username }}</p>
         <p>닉네임: {{ profile.nickname }}</p>
         <p>포인트: {{ profile.point }}</p>
+        <a href="{% url 'main:dashboard' %}">대시보드로 돌아가기</a>
+        <a href="{% url 'accounts:logout' %}">로그아웃</a>
     </main>
 </body>
 </html>

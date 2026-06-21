@@ -106,28 +106,41 @@ def join_pot_action(request, pot_id=None):
 
     input_code = request.POST.get('entry_code')
 
+    if not input_code:
+        context = {'error': '입장코드를 입력해주세요.'}
+        return render(request, 'pages/join_pot.html', context)
+
     if pot_id:
         pot = get_object_or_404(Pot, pk=pot_id)
     else:
         if not Pot.objects.filter(pot_code=input_code).exists():
-            return redirect('main:join_pot')
+            context = {'error': '존재하지 않는 입장코드입니다.'}
+            return render(request, 'pages/join_pot.html', context)
         pot = Pot.objects.get(pot_code=input_code)
 
     user = request.user
 
     if pot.participants.filter(id=user.id).exists():
-        return redirect('main:dashboard')
+        context = {'error': '이미 참여 중인 팟입니다.'}
+        return render(request, 'pages/join_pot.html', context)
 
     if pot.participants.count() >= pot.pot_people:
-        return redirect('main:dashboard')
+        context = {'error': '팟 정원이 모두 찼습니다.'}
+        return render(request, 'pages/join_pot.html', context)
 
     user_profile = request.user.profile
-    if input_code == pot.pot_code and user_profile.point >= pot.fee:
-        pot.participants.add(user)
-        user_profile.point -= pot.fee
-        user_profile.save()
-        return redirect('main:avatar_setting', pot_id=pot.id)
-    return redirect('main:dashboard')
+    if input_code != pot.pot_code:
+        context = {'error': '입장코드가 일치하지 않습니다.'}
+        return render(request, 'pages/join_pot.html', context)
+
+    if user_profile.point < pot.fee:
+        context = {'error': '포인트가 부족합니다.'}
+        return render(request, 'pages/join_pot.html', context)
+
+    pot.participants.add(user)
+    user_profile.point -= pot.fee
+    user_profile.save()
+    return redirect('main:avatar_setting', pot_id=pot.id)
 
 def new_pot(request):
     if not request.user.is_authenticated:
@@ -154,11 +167,15 @@ def create(request):
     new_pot.fee = fee
     new_pot.total_prize = (fee * pot_people) + 500
 
-    string_pool = string.ascii_uppercase + string.digits 
-    result = ""
-    for i in range(6): 
-        result += random.choice(string_pool) 
-        
+    string_pool = string.ascii_uppercase + string.digits
+    while True:
+        result = ""
+        for i in range(6):
+            result += random.choice(string_pool)
+
+        if not Pot.objects.filter(pot_code=result).exists():
+            break
+
     new_pot.pot_code = result
     new_pot.save()
 
