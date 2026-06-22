@@ -176,7 +176,11 @@
             </div>
 
             <!--여기 앵커 연결-->
-            <a href="{% url 'main:before_photo' pot.id %}" class="certify-box">
+            {% if my_today_proof %}
+                <a href="{% url 'main:after_photo' pot.id %}" class="certify-box">
+            {% else %}
+                <a href="{% url 'main:before_photo' pot.id %}" class="certify-box">
+            {% endif %}
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px" viewBox="0 0 35 35" fill="none">
                 <path d="M17.5 23.3333C19.9162 23.3333 21.875 21.3745 21.875 18.9583C21.875 16.542 19.9162 14.5833 17.5 14.5833C15.0838 14.5833 13.125 16.542 13.125 18.9583C13.125 21.3745 15.0838 23.3333 17.5 23.3333Z" stroke="black" stroke-width="2.1875"/>

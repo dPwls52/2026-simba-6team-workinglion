@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from PIL import Image
 
 class Pot(models.Model):
     host = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
@@ -17,6 +18,17 @@ class Proof(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='proof_images/')
     auth_date = models.DateField(auto_now_add=True)
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        if self.image:
+            image = Image.open(self.image.path)
+            
+            max_size = (800, 800) 
+            
+            image.thumbnail(max_size)
+            image.save(self.image.path)
 
 
 class PotAvatar(models.Model):
