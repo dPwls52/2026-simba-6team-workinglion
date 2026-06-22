@@ -132,10 +132,15 @@
 .box-left {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 15px;
     padding: 20px;
 }
-
+.left-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 .pot-name {
     color: #BC2F70;
     font-family: Inter;
@@ -174,7 +179,9 @@
     font-weight: 400;
     line-height: normal;
 }
-
+.box-right{
+    padding-right: 20px;
+}
 .pot-btn {
     display: flex;
     width: 103px;
@@ -265,6 +272,7 @@
     font-weight: 500;
     line-height: normal;
     border-bottom:2px solid #7A6229;
+    width: 29px;
 }
 
 .my-text {
