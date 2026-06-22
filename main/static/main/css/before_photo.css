@@ -17,11 +17,11 @@
 }
 .main{
     display: flex;
-width: 386px;
-flex-direction: column;
-align-items: flex-start;
-gap: 35px;
-margin-top: 86px;
+    width: 386px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 35px;
+    margin-top: 86px;
 }
 .header{
     display: flex;
@@ -62,104 +62,119 @@ margin-top: 86px;
 }
 .title-text{
     color: #000;
-font-family: Inter;
-font-size: 25px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.subtitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+.goal, .date{
+    color: #8F8E8E;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 .icon-photo{
     width: 32px;
-height: 32px;
-aspect-ratio: 1/1;
-margin-top: 5px;
+    height: 32px;
+    aspect-ratio: 1/1;
+    margin-top: 5px;
 }
 .body{
     display: flex;
-flex-direction: column;
-align-items: center;
-gap: 31px;
-align-self: stretch;
+    flex-direction: column;
+    align-items: center;
+    gap: 31px;
+    align-self: stretch;
 }
 .photospace{
     display: flex;
-height: 464.997px;
-padding: 172px 93px 198px 92px;
-flex-direction: column;
-align-items: flex-start;
-gap: 10px;
-align-self: stretch;
-aspect-ratio: 346/461;
+    height: 464.997px;
+    padding: 172px 93px 198px 92px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    aspect-ratio: 346/461;
 
-border-radius: 15px;
-border: 2px dashed #FF3134;
-background: #FFDBDB;
+    border-radius: 15px;
+    border: 2px dashed #FF3134;
+    background: #FFDBDB;
 }
 .photo_img{
     width: 40px;
-height: 40px;
-aspect-ratio: 1/1;
+    height: 40px;
+    aspect-ratio: 1/1;
 }
 .spacebody{
     display: flex;
-width: 161px;
-flex-direction: column;
-align-items: center;
-gap: 20px;
+    width: 161px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 .bodytext{
     display: flex;
-flex-direction: column;
-align-items: center;
-align-self: stretch;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
 }
 .upload-text{
     align-self: stretch;
 
     color: #000;
-text-align: center;
-font-family: Inter;
-font-size: 15px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    text-align: center;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 .subtext{
     align-self: stretch;
 
     color: #8F8E8E;
-text-align: center;
-font-family: Inter;
-font-size: 11px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    text-align: center;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 .additional{
     display: flex;
-width: 240px;
-flex-direction: column;
-align-items: flex-start;
-gap: 6.512px;
+    width: 240px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6.512px;
+    padding: 10px;
 }
 .additional-row{
     display: flex;
-align-items: center;
-gap: 3.721px;
+    align-items: center;
+    gap: 3.721px;
 }
 .check-icon{
     width: 15.585px;
-height: 11.697px;
+    height: 11.697px;
 
-fill: #50C020;
+    fill: #50C020;
 }
 .additional-text{
     color: #8F8E8E;
-font-family: Inter;
-font-size: 13.953px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    font-family: Inter;
+    font-size: 13.953px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 .body-bottom {
     display: flex;
@@ -188,14 +203,14 @@ line-height: normal;
 
 .gallery_img{
     width: 26px;
-height: 26px;
-aspect-ratio: 1/1;
+    height: 26px;
+    aspect-ratio: 1/1;
 }
 .btn-text{
     color: #000;
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
