@@ -18,10 +18,35 @@ def mypage(request, id):
     
     completed_pots_count = my_pots.filter(is_completed=True).count()
     
-    total_days = sum(pot.days for pot in my_pots)
+    today = datetime.date.today()
+    active_dates = set()
+
+    expected_auth_count = 0
+    WEEKDAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+
+    for pot in my_pots:
+        if today < pot.start_date:
+            continue
+            
+        for i in range(pot.days):
+            current_date = pot.start_date + datetime.timedelta(days=i)
+            
+            if current_date > today:
+                break 
+                
+            active_dates.add(current_date)
+
+            weekday_str = WEEKDAYS[current_date.weekday()]
+            if weekday_str in pot.auth_days: 
+                expected_auth_count += 1
+
+    total_days = len(active_dates)
     
     valid_proofs_count = Proof.objects.filter(user=profile_user, is_valid=True).count()
-    achievement_rate = int((valid_proofs_count / total_days) * 100) if total_days > 0 else 0
+    if expected_auth_count > 0:
+        achievement_rate = int((valid_proofs_count / expected_auth_count) * 100)
+    else:
+        achievement_rate = 0
 
     context = {
         'profile_user': profile_user,
