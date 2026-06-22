@@ -81,11 +81,6 @@
                     </label>
                     
                     <input id="file-upload" type="file" name="image" accept="image/*" required style="display: none;" onchange="this.form.submit();">
-
-                    <button class="photo" type="submit">
-                        <img src="{% static 'main/img/camera_icon.png' %}" class="camera_icon_img" alt="인증사진 업로드">
-                        <p class="btn-text">인증사진 업로드</p>
-                    </button>
                     
                     {% if error %}
                     <p class="upload-text">{{ error }}</p>
