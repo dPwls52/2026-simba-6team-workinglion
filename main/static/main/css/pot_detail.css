@@ -133,11 +133,13 @@ body{
 
 .avatar-wrapper{
     display: flex;
-
+width: 130px;
+    height: 130px; 
+    flex-shrink: 0;
     padding: 12px 6px 12px 6px;
     justify-content: center;
+    box-sizing: border-box;
     align-items: center;
-    align-self: stretch;
     border-radius: 50%;
     border: 4px solid #DFDFDF;
     background: #FFFBE8;
@@ -321,6 +323,12 @@ label[for="item-glasses"] .item-name {
     border-radius: 13.077px;
     border: 0.5px solid #000;
     background: #FFF;
+    color: #0075FF;
+    font-family: Inter;
+    font-size: 7.25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .select-text{
@@ -485,26 +493,38 @@ input[name="treat-item"]:checked + .item-box {
     font-weight: 400;
     line-height: normal;
 }
-.avatar-wrapper[data-color="blue"] > svg #avatar-body { fill: #5B79FF; }
-.avatar-wrapper[data-color="blue"] > svg #wing-left-fill,
-.avatar-wrapper[data-color="blue"] > svg #wing-right-fill { fill: #4A63CF; stroke: #4A63CF; }
 
-.avatar-wrapper[data-color="purple"] > svg #avatar-body { fill: #CB33DF; }
-.avatar-wrapper[data-color="purple"] > svg #wing-left-fill,
-.avatar-wrapper[data-color="purple"] > svg #wing-right-fill { fill: #A028AF; stroke: #A028AF; }
+.avatar-wrapper svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+/* 파란색 */
+.avatar-wrapper[data-color="blue"] svg #avatar-body { fill: #5B79FF; }
+.avatar-wrapper[data-color="blue"] svg #wing-left-fill,
+.avatar-wrapper[data-color="blue"] svg #wing-right-fill { fill: #4A63CF; stroke: #4A63CF; }
 
-.avatar-wrapper[data-color="green"] > svg #avatar-body { fill: #9DBF4A; }
-.avatar-wrapper[data-color="green"] > svg #wing-left-fill,
-.avatar-wrapper[data-color="green"] > svg #wing-right-fill { fill: #7E993B; stroke: #7E993B; }
+/* 보라색 */
+.avatar-wrapper[data-color="purple"] svg #avatar-body { fill: #CB33DF; }
+.avatar-wrapper[data-color="purple"] svg #wing-left-fill,
+.avatar-wrapper[data-color="purple"] svg #wing-right-fill { fill: #A028AF; stroke: #A028AF; }
 
-.avatar-wrapper[data-color="red"] > svg #avatar-body { fill: #E85555; }
-.avatar-wrapper[data-color="red"] > svg #wing-left-fill,
-.avatar-wrapper[data-color="red"] > svg #wing-right-fill { fill: #C93E3E; stroke: #C93E3E; }
+/* 초록색 */
+.avatar-wrapper[data-color="green"] svg #avatar-body { fill: #9DBF4A; }
+.avatar-wrapper[data-color="green"] svg #wing-left-fill,
+.avatar-wrapper[data-color="green"] svg #wing-right-fill { fill: #7E993B; stroke: #7E993B; }
 
-.avatar-wrapper[data-color="gray"] > svg #avatar-body { fill: #A9A9A9; }
-.avatar-wrapper[data-color="gray"] > svg #wing-left-fill,
-.avatar-wrapper[data-color="gray"] > svg #wing-right-fill { fill: #808080; stroke: #808080; }
+/* 빨간색 */
+.avatar-wrapper[data-color="red"] svg #avatar-body { fill: #E85555; }
+.avatar-wrapper[data-color="red"] svg #wing-left-fill,
+.avatar-wrapper[data-color="red"] svg #wing-right-fill { fill: #C93E3E; stroke: #C93E3E; }
 
-.avatar-wrapper[data-color="pink"] > svg #avatar-body { fill: #FF5A96; }
-.avatar-wrapper[data-color="pink"] > svg #wing-left-fill,
-.avatar-wrapper[data-color="pink"] > svg #wing-right-fill { fill: #D83B76; stroke: #D83B76; }
+/* 회색 */
+.avatar-wrapper[data-color="gray"] svg #avatar-body { fill: #A9A9A9; }
+.avatar-wrapper[data-color="gray"] svg #wing-left-fill,
+.avatar-wrapper[data-color="gray"] svg #wing-right-fill { fill: #808080; stroke: #808080; }
+
+/* 분홍색 */
+.avatar-wrapper[data-color="pink"] svg #avatar-body { fill: #FF5A96; }
+.avatar-wrapper[data-color="pink"] svg #wing-left-fill,
+.avatar-wrapper[data-color="pink"] svg #wing-right-fill { fill: #D83B76; stroke: #D83B76; }

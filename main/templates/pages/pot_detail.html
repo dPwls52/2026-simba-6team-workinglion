@@ -38,26 +38,27 @@
                         </style>
     
                         <div class="avatar-wrapper" data-color="{{ info.avatar_color }}" style="position: relative;">
-        
+                        
+                        {% if info.avatar_item %}
+                            <div class="item-layer" style="width: 100%; height: 100%;">
+                                {% if info.avatar_item == 'post' %}
+                                    {% include 'pages/_bird_post_svg.html' %}
+                                {% elif info.avatar_item == 'poop' %}
+                                    {% include 'pages/_bird_poop_svg.html' %}
+                                {% elif info.avatar_item == 'glasses' %}
+                                    {% include 'pages/_bird_glasses_svg.html' %}
+                                {% elif info.avatar_item == 'flower' %}
+                                    {% include 'pages/_bird_flower_svg.html' %}
+                                {% elif info.avatar_item == 'gyaru' %}
+                                    {% include 'pages/_bird_gyaru_svg.html' %}
+                                {% endif %}
+                            </div>
+                            
+                        {% else %}
                             {% include 'pages/_bird_svg.html' %}
+                        {% endif %}
 
-                            {% if info.avatar_item %}
-                                <div class="item-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none;">
-                                    {% if info.avatar_item == 'post' %}
-                                        {% include 'pages/_bird_post_svg.html' %}
-                                    {% elif info.avatar_item == 'poop' %}
-                                        {% include 'pages/_bird_poop_svg.html' %}
-                                    {% elif info.avatar_item == 'glasses' %}
-                                        {% include 'pages/_bird_glasses_svg.html' %}
-                                    {% elif info.avatar_item == 'flower' %}
-                                        {% include 'pages/_bird_flower_svg.html' %}
-                                    {% elif info.avatar_item == 'gyaru' %}
-                                        {% include 'pages/_bird_gyaru_svg.html' %}
-                                    {% endif %}
-                                </div>
-                            {% endif %}
-        
-                        </div>
+                    </div>
 
 
                     <div class="member-info">
@@ -91,10 +92,10 @@
                             </div>
                         {% endif %}
                     </div>    
-                </div>
-            </div>  
+                </div> 
             {% endfor %}
         </div>
+    </div>    
 
         <div class="item-frame">
             <div class="text-container">
