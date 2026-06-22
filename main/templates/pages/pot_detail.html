@@ -32,6 +32,9 @@
                 <!--변수확인좀-->
                 {% for info in participant_infos %}
                     <div class="member-box">
+                        {% if info.user != request.user %}
+                            <a href="{% url 'main:photo_vote' pot.id info.user.id %}" style="text-decoration: none;">
+                        {% endif %}
                         <style>
                             .item-layer svg {
                                 width: 100% !important;
@@ -60,8 +63,8 @@
                         {% else %}
                             {% include 'pages/_bird_svg.html' %}
                         {% endif %}
-
                     </div>
+                    </a>
 
 
                     <div class="member-info">
@@ -78,7 +81,7 @@
                                 {% if info.user == request.user %}
                                 <p>인증</p>
                                 {% else %}
-                                <a href="{% url 'main:photo_vote' pot.id info.user.id %}"><p>인증</p></a>
+                                <p>인증</p>
                                 {% endif %}
                             </div>
                         {% elif info.vote_proof %}
@@ -86,7 +89,7 @@
                                 {% if info.user == request.user %}
                                 <p>인증 취소</p>
                                 {% else %}
-                                <a href="{% url 'main:photo_vote' pot.id info.user.id %}"><p>인증 취소</p></a>
+                                <p>인증 취소</p>
                                 {% endif %}
                             </div>
                         {% else %}

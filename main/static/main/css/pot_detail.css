@@ -116,12 +116,10 @@ body{
 }
 
 .member-container{
-    display: inline-grid;
+    display:grid;
+    grid-template-columns:auto auto;
+    column-gap:59px;
     row-gap: 21px;
-    column-gap: 59px;
-    align-self: stretch;
-    grid-template-columns: repeat(2,minmax(0,1fr));
-    grid-auto-flow: row;
 }
 
 .member-box{
@@ -534,3 +532,12 @@ input[name="treat-item"]:checked + .item-box {
 .avatar-wrapper[data-color="pink"] svg #avatar-body { fill: #FF5A96; }
 .avatar-wrapper[data-color="pink"] svg #wing-left-fill,
 .avatar-wrapper[data-color="pink"] svg #wing-right-fill { fill: #D83B76; stroke: #D83B76; }
+
+.member-box a {
+    display: flex;      
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    display: contents;
+}
