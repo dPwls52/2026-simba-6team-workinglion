@@ -24,22 +24,27 @@ body {
 .back-btn {
     width: 54px;
     height: 54px;
-    border-radius: 50%;
-    background-color: #FFFCEB;
+
+    background: #FFFCEB;
     border: 1px solid #DDD08A;
+    border-radius: 50%;
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
-    color: #333;
+
     cursor: pointer;
+
     position: absolute;
     left: 0;
 }
 
-.back-dir {
-    margin: 0;
-    font-size: 20px;
+.back-text{
+    width: 29px;
+    height: 29px;
+    
+    aspect-ratio: 1/1;
 }
 
 .title {

@@ -37,23 +37,27 @@ body{
     line-height: normal;
 }
 
-.back-btn {
+.back-btn{
     width: 54px;
     height: 54px;
-    border-radius: 50%;
-    background-color: #FFFCEB;
+
+    background: #FFFCEB;
     border: 1px solid #DDD08A;
+    border-radius: 50%;
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
-    color: #333;
-    cursor: pointer;
-}
 
-.back-dir {
-    margin: 0;
-    font-size: 20px;
+    cursor: pointer;
+
+}
+.back-text{
+    width: 29px;
+    height: 29px;
+    
+    aspect-ratio: 1/1;
 }
 
 .d-day{
@@ -238,6 +242,7 @@ width: 130px;
 }
 
 .text-container{
+    margin-left: 5px;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -255,8 +260,8 @@ width: 130px;
 
 .treat-container{
     display: flex;
-    height: 186px;
-    padding: 18px 22px 17px 22px;
+
+    padding: 18px 45px;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
@@ -264,6 +269,7 @@ width: 130px;
     border-radius: 10px;
     border: 1px solid #FFE357;
     background: #FFF;
+    
 }
 
 .item-list{
@@ -364,7 +370,7 @@ label[for="item-glasses"] .item-name {
     justify-content: center;
     align-items: center;
     align-self: stretch;
-    height: 45px;
+    height: 29px;
     border-radius: 10px;
     background: #D1D1D1;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -447,7 +453,7 @@ label[for="item-glasses"] .item-name {
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    margin-bottom: 20px; 
+ 
 }
 
 .item-box {
