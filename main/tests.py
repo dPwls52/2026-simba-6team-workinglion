@@ -129,17 +129,17 @@ class CoreFlowTests(TestCase):
         self.assertRedirects(self.client.get(before_url), reverse('main:dashboard'))
         self.assertRedirects(self.client.get(after_url), reverse('main:dashboard'))
 
-    def test_photo_upload_redirects_to_detail_and_blocks_duplicate(self):
+    def test_photo_upload_redirects_to_after_photo_and_blocks_duplicate(self):
         self.client.force_login(self.host)
         before_url = reverse('main:before_photo', args=[self.pot.id])
-        detail_url = reverse('main:pot_detail', args=[self.pot.id])
+        after_url = reverse('main:after_photo', args=[self.pot.id])
 
         response = self.client.post(before_url, {'image': self.make_image()})
-        self.assertRedirects(response, detail_url)
+        self.assertRedirects(response, after_url)
         self.assertEqual(Proof.objects.filter(pot=self.pot, user=self.host).count(), 1)
 
         response = self.client.post(before_url, {'image': self.make_image('second.png')})
-        self.assertRedirects(response, detail_url)
+        self.assertRedirects(response, after_url)
         self.assertEqual(Proof.objects.filter(pot=self.pot, user=self.host).count(), 1)
 
     def test_invalid_proof_is_not_shown_as_authenticated(self):
