@@ -21,6 +21,7 @@ def get_end_date(pot):
 
 
 def is_pot_ended(pot, today):
+    # return True
     return today > get_end_date(pot)
 
 
@@ -68,12 +69,12 @@ def dashboard(request):
         return redirect('accounts:login')
 
     today = datetime.date.today()
-    pots = Pot.objects.filter(participants=request.user)
+    pots = Pot.objects.filter(participants=request.user, is_completed=False)
     for pot in pots:
         pot.d_day = max((get_end_date(pot) - today).days, 0)
         pot.is_ended = is_pot_ended(pot, today)
         pot.is_authenticated_today = Proof.objects.filter(pot=pot, user=request.user, auth_date=today).exists()
-    empty_slots = range(max(0, 4 - len(pots))) 
+    empty_slots = range(max(1, 4 - len(pots))) 
     
     return render(request, 'pages/dashboard.html', {
         'pots': pots,
