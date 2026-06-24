@@ -93,7 +93,6 @@
     overflow: hidden;
 
     border-radius: 15px;
-    border: 2px dashed #34A512;
 }
 .photospace img{
     width: 100%;
@@ -107,6 +106,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 6.512px;
+    margin-top:10px;
 }
 .additional-row{
     display: flex;
@@ -140,6 +140,7 @@
     align-items: flex-start;
     gap: 12px;
     align-self: stretch;
+   
 }
 .vote-title{
     display: flex;
@@ -160,6 +161,12 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 0 15px;
+    color: #8F8E8E;
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 .goal, .date{
     color: #8F8E8E;
@@ -234,4 +241,17 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.body-bottom{
+    display: flex;
+width: 349px;
+height: 136px;
+padding: 16px 20px 16px 21px;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+border-radius: 15px;
+border: 1px solid #DADADA;
+background: #FFF;
 }
