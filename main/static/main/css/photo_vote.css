@@ -108,6 +108,9 @@
     align-items: flex-start;
     gap: 10px;
     align-self: stretch;
+    border-radius: 15px;
+border: 1px solid #DADADA;
+background: #FFF;
 }
 .vote-title{
     display: flex;
@@ -124,10 +127,16 @@
     line-height: normal;
 }
 .subtitle{
-    display: flex;
+      display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 0 15px;
+    color: #8F8E8E;
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 .goal, .date{
     color: #8F8E8E;
@@ -189,7 +198,9 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    text-align: center;
+    text-align: left;
+    margin-left: 25px;
+    margin-bottom: 10px;
 }
 .vote-body{
     display: flex;

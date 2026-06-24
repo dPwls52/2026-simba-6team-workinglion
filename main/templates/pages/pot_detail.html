@@ -43,7 +43,12 @@
                             }
                         </style>
     
-                        <div class="avatar-wrapper" data-color="{{ info.avatar_color }}" style="position: relative;">
+                        <div class="avatar-wrapper 
+                        {% if info.proof %} status-success 
+                        {% elif info.vote_proof %} status-fail 
+                        {% else %} status-none 
+                        {% endif %}" 
+                        data-color="{{ info.avatar_color }}" style="position: relative;">
                         
                         {% if info.avatar_item %}
                             <div class="item-layer" style="width: 100%; height: 100%;">

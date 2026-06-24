@@ -506,6 +506,19 @@ input[name="treat-item"]:checked + .item-box {
     height: 100%;
     object-fit: contain;
 }
+
+.avatar-wrapper.status-success {
+    border: 4px solid #ACE86B; 
+}
+
+.avatar-wrapper.status-fail {
+    border: 4px solid #FF5154; 
+}
+
+.avatar-wrapper.status-none {
+    border: 4px solid #DFDFDF; 
+}
+
 /* 파란색 */
 .avatar-wrapper[data-color="blue"] svg #avatar-body { fill: #5B79FF; }
 .avatar-wrapper[data-color="blue"] svg #wing-left-fill,
